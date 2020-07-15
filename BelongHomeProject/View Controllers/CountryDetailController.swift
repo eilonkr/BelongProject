@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CountryDetailController.swift
 //  BelongHomeProject
 //
 //  Created by Eilon Krauthammer on 15/07/2020.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CountryDetailController: UIViewController {
+    
+    public var country: Country!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
-
 }
-
