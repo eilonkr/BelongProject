@@ -12,6 +12,9 @@
 		9546A1FB24BEF5BF00A6A8CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9546A1F924BEF5BF00A6A8CD /* Main.storyboard */; };
 		9546A1FD24BEF5C100A6A8CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9546A1FC24BEF5C100A6A8CD /* Assets.xcassets */; };
 		9546A20024BEF5C100A6A8CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9546A1FE24BEF5C100A6A8CD /* LaunchScreen.storyboard */; };
+		958477F124BF9943000C97F2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958477F024BF9943000C97F2 /* AppConstants.swift */; };
+		958477F324BF9D51000C97F2 /* EKArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958477F224BF9D51000C97F2 /* EKArchiver.swift */; };
+		9597102924BFA3E300A581AA /* LocalDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597102824BFA3E300A581AA /* LocalDatabaseManager.swift */; };
 		959BEEFE24BF231300FF6D92 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BEEFD24BF231300FF6D92 /* CacheService.swift */; };
 		95BC9ED324BF0551009884FA /* CountryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BC9ED224BF0551009884FA /* CountryListController.swift */; };
 		95BC9ED524BF0577009884FA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BC9ED424BF0577009884FA /* Country.swift */; };
@@ -46,6 +49,9 @@
 		9546A1FC24BEF5C100A6A8CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9546A1FF24BEF5C100A6A8CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9546A20124BEF5C100A6A8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		958477F024BF9943000C97F2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = BelongHomeProject/AppConstants.swift; sourceTree = SOURCE_ROOT; };
+		958477F224BF9D51000C97F2 /* EKArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKArchiver.swift; sourceTree = "<group>"; };
+		9597102824BFA3E300A581AA /* LocalDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseManager.swift; sourceTree = "<group>"; };
 		959BEEFD24BF231300FF6D92 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		95BC9ED224BF0551009884FA /* CountryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListController.swift; sourceTree = "<group>"; };
 		95BC9ED424BF0577009884FA /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			children = (
 				95BC9ED424BF0577009884FA /* Country.swift */,
 				95BC9ED824BF05B8009884FA /* CountryManager.swift */,
+				9597102824BFA3E300A581AA /* LocalDatabaseManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 			children = (
 				95BC9ED624BF05A2009884FA /* NetworkClient.swift */,
 				959BEEFD24BF231300FF6D92 /* CacheService.swift */,
+				958477F224BF9D51000C97F2 /* EKArchiver.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 		95BC9ED124BF0505009884FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				958477F024BF9943000C97F2 /* AppConstants.swift */,
 				95BC9EDA24BF05F3009884FA /* Extensions+Helpers.swift */,
 			);
 			path = Helpers;
@@ -292,8 +301,11 @@
 				95BC9EDE24BF06AB009884FA /* CountryCell.swift in Sources */,
 				95BC9EE024BF16E3009884FA /* CountryDetailController.swift in Sources */,
 				95BC9ED524BF0577009884FA /* Country.swift in Sources */,
+				958477F124BF9943000C97F2 /* AppConstants.swift in Sources */,
 				95BC9ED724BF05A2009884FA /* NetworkClient.swift in Sources */,
+				958477F324BF9D51000C97F2 /* EKArchiver.swift in Sources */,
 				959BEEFE24BF231300FF6D92 /* CacheService.swift in Sources */,
+				9597102924BFA3E300A581AA /* LocalDatabaseManager.swift in Sources */,
 				95BC9ED924BF05B8009884FA /* CountryManager.swift in Sources */,
 				9546A1F424BEF5BF00A6A8CD /* AppDelegate.swift in Sources */,
 				9546A1F624BEF5BF00A6A8CD /* SceneDelegate.swift in Sources */,
@@ -374,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -428,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

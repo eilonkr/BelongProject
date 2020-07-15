@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct Country: Decodable {
+struct Country: Codable, Equatable {
+    
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        return lhs.name == rhs.name
+    }
     
     enum CodingKeys: String, CodingKey {
-        case name, flagURL = "flag"
+        case name, population, flagURL = "flag"
     }
     
     let name: String
+    private let population: Int
     let flagURL: String?
+    
+    public var populationString: String {
+        return (population as NSNumber).description(withLocale: Locale.current)
+    }
     
 }

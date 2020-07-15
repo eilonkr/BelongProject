@@ -37,7 +37,7 @@ class CountryCell: UITableViewCell {
     // MARK: - Configuration
     
     private func configure() {
-        self.flagImageView.image = UIImage(named: "unknown_flag")
+        self.flagImageView.image = AppConstants.defaultFlagImage
         self.countryNameLabel.text = country.name
         try? CountryManager.flagImage(forCountry: country, index: self.cellIndex) { [weak self] (image, index) in
             // Make sure that the index is identical to the one we started with - so we don't end up displaying the wrong flag upon a fast scroll.

@@ -25,8 +25,8 @@ struct NetworkService<T: Decodable> {
                 do {
                     let result = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(result))
-                } catch let err {
-                    completion(.failure(err))
+                } catch let e {
+                    completion(.failure(e))
                 }
             }
             

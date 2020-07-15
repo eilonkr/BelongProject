@@ -6,17 +6,20 @@
 //  Copyright © 2020 Eilon Krauthammer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct CacheService<Object: AnyObject> {
+class CacheService {
     
-    private let cache = NSCache<NSString, Object>()
+    /// Singleton
+    static let shared = CacheService()
     
-    public func get(forKey key: String) -> Object? {
+    private let cache = NSCache<NSString, UIImage>()
+    
+    public func get(forKey key: String) -> UIImage? {
         cache.object(forKey: key as NSString)
     }
     
-    public func set(_ object: Object, forKey key: String) {
+    public func set(_ object: UIImage, forKey key: String) {
         cache.setObject(object, forKey: key as NSString)
     }
     

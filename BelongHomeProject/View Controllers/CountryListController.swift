@@ -26,42 +26,83 @@ class CountryListController: UITableViewController {
     
     private var filteredCountries: [Country] = .init() {
         didSet {
+            modifyNoCountries(emptyBefore: oldValue.count == 0)
             tableView.reloadData()
         }
     }
     
     private var didFetch: Bool = false
+    
+    private lazy var noCountriesLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.frame.size = .init(width: view.frame.width * 0.75, height: 100)
+        label.text = "No countries yet :( \n Tap the Play button at the top to load countries from the internet!"
+        label.textColor = UIColor.secondaryLabel
+        label.textAlignment = .center
+        return label
+    }()
 
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadLocalCountries()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedCellIndexPath = tableView.indexPathForSelectedRow {
             if segue.identifier == "toDetail", let dest = segue.destination as? CountryDetailController {
-                dest.country = countries[selectedCellIndexPath.row]
+                dest.country = filteredCountries[selectedCellIndexPath.row]
             }
         }
     }
     
-    // MARK: - Methods
-
+    // MARK: - Country Fetching
+    
+    private func loadLocalCountries() {
+        countries = (try? LocalDatabaseManager.getLocalCountries()) ?? []
+    }
+    
     private func fetchCountries() {
         CountryManager.fetchCountries { [weak self] result in
+            guard let self = self else { return }
+            let _countries = self.countries
             switch result {
                 case .success(let countries):
-                    self?.countries = countries
+                    // Only append countries that are not saved locally
+                    
+                    /* Option 1
+                    for country in countries where !_countries.contains(country) {
+                        _countries.append(country)
+                    }
+                    self.countries = _countries
+
+                    */
+                
+                    /* Option 2 */
+                    self.countries += countries.filter { !_countries.contains($0) }
                 case .failure(let error):
                     print(error)
             }
         }
     }
     
+    // MARK: - UI Handling
+    
+    private func modifyNoCountries(emptyBefore: Bool) {
+        if filteredCountries.count > 0 && emptyBefore {
+            guard noCountriesLabel.isDescendant(of: view) else { return }
+            noCountriesLabel.removeFromSuperview()
+        } else if filteredCountries.count == 0 && !noCountriesLabel.isDescendant(of: view) {
+            view.addSubview(noCountriesLabel)
+            noCountriesLabel.center = .init(x: view.center.x, y: 200.0)
+        }
+    }
+    
     // MARK: - User Interaction
     
-    @IBAction func addTapped(_ sender: Any) {
+    @IBAction func loadTapped(_ sender: Any) {
         guard !didFetch else { return }
         didFetch = true
         fetchCountries()
@@ -85,6 +126,10 @@ extension CountryListController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetail", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
 
