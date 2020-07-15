@@ -62,7 +62,7 @@ struct CountryManager {
                 return
             }
             
-            // We are resizing the image in order to preserve memory
+            // We are resizing the image in order to preserve memory, performance optimization
             guard let flagImage = image.uiImage.resizeFor(width: 100.0) else { handler(.none, index); return }
             cache.set(flagImage, forKey: url.absoluteString)
             DispatchQueue.main.async {
