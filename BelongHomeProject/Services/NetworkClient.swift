@@ -10,10 +10,10 @@ import Foundation
 
 struct NetworkService<T: Decodable> {
     
-    typealias ResultHandler = Result<T, Error>
+    typealias ResultHandler = (Result<T, Error>) -> Void
     
     /// Fetch a decodable object from a given URL.
-    static func get(fromURL url: URL, completion: @escaping (ResultHandler) -> Void) {
+    static func get(fromURL url: URL, completion: @escaping ResultHandler) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async { completion(.failure(error)) }

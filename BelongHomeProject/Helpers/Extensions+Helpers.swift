@@ -18,13 +18,6 @@ extension Collection {
     }
 }
 
-extension UIEdgeInsets {
-    /// Apply even insets across to all edges.
-    static func even(_ val: CGFloat) -> UIEdgeInsets {
-        return .init(top: val, left: val, bottom: val, right: val)
-    }
-}
-
 extension UIImage {
     func resizeWithPercent(percentage: CGFloat) -> UIImage? {
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: size.width * percentage, height: size.height * percentage)))

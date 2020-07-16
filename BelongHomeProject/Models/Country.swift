@@ -19,8 +19,8 @@ struct Country: Codable, Equatable {
     }
     
     let name: String
-    private let population: Int
     let flagURL: String?
+    private let population: Int
     
     public var populationString: String {
         return (population as NSNumber).description(withLocale: Locale.current)

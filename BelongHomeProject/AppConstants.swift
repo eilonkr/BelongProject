@@ -15,6 +15,4 @@ struct AppConstants {
     
     static let countriesURLString = "https://restcountries.eu/rest/v2/all"
     
-    
-    
 }
